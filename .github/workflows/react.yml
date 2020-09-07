@@ -1,13 +1,28 @@
-name: Continuous Integration
-jobs:
-  buildAndTest:
-    name: Build and Test
-    runs-on: ubuntu-latest    
-    steps:
-      - uses: actions/checkout@v1
-      - name: Install Dependencies
-        run: yarn
-      - name: Build
-        run: yarn build
-      - name: Test
-        run: yarn test --watchAll=false
+cache:
+  paths:
+    - node_modules/
+    - .yarn
+stages:
+  - build
+  - test
+  - deploy
+build:
+  image: node:10
+  stage: build
+  script:
+    - yarn config set cache-folder .yarn
+    - yarn install --pure-lockfile --cache-folder .yarn
+    - yarn build
+  artifacts:
+    paths:
+      - ./build
+  only:
+    - master
+test:
+  image: node:10
+  stage: test
+  script:
+    - echo "Running react test suite......"
+    - yarn test
+  only:
+    - master
