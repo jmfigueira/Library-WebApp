@@ -1,4 +1,4 @@
-# Library-NETCORE
+# Library-WebApp
 - Projeto para apresentações (DDD).
 
 # WebApp - REACT 16.12;
