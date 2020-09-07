@@ -1,38 +1,14 @@
-name: React
-
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
+name: Continuous Integration
+on: [pull_request]
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
+  buildAndTest:
+    name: Build and Test
+    runs-on: ubuntu-latest    
     steps:
-   name: .NET Core
-
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    
-    - name: Install Dependencies
-      run: yarn
-    
-    - name: Build
-      run: yarn build
-    
-    - name: Test
-      run: yarn test --watchAll=false
+      - uses: actions/checkout@v1
+      - name: Install Dependencies
+        run: yarn
+      - name: Build
+        run: yarn build
+      - name: Test
+        run: yarn test --watchAll=false
