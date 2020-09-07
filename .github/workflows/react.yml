@@ -1,5 +1,4 @@
 name: Continuous Integration
-on: [pull_request]
 jobs:
   buildAndTest:
     name: Build and Test
