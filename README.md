@@ -1,5 +1,5 @@
 # Library-WebApp
-- Projeto para apresentações (DDD).
+- Projeto para apresentações.
 
 # WebApp - REACT 16.12;
 
